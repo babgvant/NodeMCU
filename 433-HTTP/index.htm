@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>     
+    <meta charset="utf-8" />     
+    <title>Remote Driver</title>     
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">     
+    <meta name="viewport" content="width=device-width, initial-scale=1">     
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> 
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+</head> 
+<body>     
+    <h1 class="hidden-xs text-center">Remote Driver</h1>     
+    <div class="container">             
+        <div class="row">                 
+            <div class="col-sm-4 col-sm-offset-0">                     
+                <h3 class="text-primary text-center">One</h3>                     
+                <button class="btn btn-block btn-lg btn-success clickme" role="button" name="switch" value="1">On</button>                     
+                <button class="btn btn-block btn-lg btn-danger clickme" role="button" name="switch" value="2">Off</button>                 
+            </div>          
+            <div class="col-sm-4 col-sm-offset-0">                     
+                <h3 class="text-primary text-center">Two</h3>                     
+                <button class="btn btn-block btn-lg btn-success clickme" role="button" name="switch" value="3">On</button>                     
+                <button class="btn btn-block btn-lg btn-danger clickme" role="button" name="switch" value="0">Off</button>                 
+            </div>                 
+            <div class="col-sm-4 col-sm-offset-0">                     
+                <h3 class="text-primary text-center">Three</h3>                     
+                <button class="btn btn-block btn-lg btn-success clickme" role="button" name="switch" value="5">On</button>                     
+                <button class="btn btn-block btn-lg btn-danger clickme" role="button" name="switch" value="6">Off</button>                 
+            </div>          
+            <div class="col-sm-4 col-sm-offset-0">                     
+                <h3 class="text-primary text-center">Four</h3>                     
+                <button class="btn btn-block btn-lg btn-success clickme" role="button" name="switch" value="7">On</button>                     
+                <button class="btn btn-block btn-lg btn-danger clickme" role="button" name="switch" value="8">Off</button>                 
+            </div>             
+        </div>         
+    </div> 
+    <div id="status" style="display:none"></div>
+    <script>
+        $( document ).ready(function() {
+            $('.clickme').click(function(){
+                //alert($(this).attr('value'));
+                var jqxhr = $.get( $(this).attr('value'), function() {
+                  //alert( "success" );
+                })
+                  .done(function() {
+                    $('#status').empty().append( " success" );
+                  })
+                  .fail(function() {
+                    $('#status').empty().append( "error" );
+                  });
+            });
+        }); 
+    </script>
+</body>
+</html>
